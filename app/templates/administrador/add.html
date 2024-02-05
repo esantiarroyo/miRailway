@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Administrador</title>
+</head>
+<body>
+    <h1>Agregar Administrador</h1>
+    <form action="{{ url_for('administrador.add') }}" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombreAdm" required>
+        <label for="tipoDoc">Tipo Documento:</label>
+        <input type="text" id="tipoDoc" name="tipoDocAdm" required>
+        <label for="noDoc">Numero Documento:</label>
+        <input type="number" id="noDoc" name="noDocAdm" required>
+        <label for="cel">Celular:</label>
+        <input type="number" id="cel" name="celAdm" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="emailAdm" required>
+        <label for="con">Contraseña:</label>
+        <input type="password" id="con" name="conAdm" required>
+        <button type="submit">Agregar</button>
+    </form>
+</body>
+</html>

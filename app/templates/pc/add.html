@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Pc</title>
+</head>
+<body>
+    <h1>Agregar Pc</h1>
+    <form action="{{ url_for('pc.add') }}" method="post">
+        <label for="marca">Marca:</label>
+        <input type="text" id="marca" name="marcaPc" required>
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="colorPc" required>
+        <label for="serial">Serial:</label>
+        <input type="text" id="serial" name="serialPc" required>
+        <label for="usuario">Usuario:</label>
+        <select name="idUsu" id="idUsu">
+            {% for usuario in data %}
+                <option value="{{ usuario.idUsu }}">{{ usuario.nombreUsu }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Agregar</button>
+    </form>
+</body>
+</html>

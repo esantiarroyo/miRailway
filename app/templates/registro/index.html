@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Registros</title>
+</head>
+<body>
+    <h1>Lista de Registros</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Pc</th>
+            <th>Entrada</th>
+            <th>Salida</th>
+            <th>Celador</th>
+        </tr>
+        {% for registro in data %}
+            <tr>
+                <td>{{ registro.idReg }}</td>
+                <td>{{ registro.idPc }}</td>
+                <td>{{ registro.entrada }}</td>
+                <td>{{ registro.salida }}</td>
+                <td>{{ registro.idCel }}</td>
+                
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('pc.index') }}">Ver Pcs</a>
+    <a href="{{ url_for('celador.index') }}">Ver Celadores</a>
+    
+</body>
+</html>

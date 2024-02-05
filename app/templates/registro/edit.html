@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Registros</title>
+</head>
+<body>
+    <h1>Editar Registro</h1>
+    <form action="{{ url_for('registro.edit', id=registro.idReg) }}" method="post">
+        <label for="pc">Pc:</label>
+        <input type="text" id="pc" name="idPc" value="{{ registro.idPc }}" required>
+        <label for="entrada">Entrada:</label>
+        <input type="localdate" id="entrada" name="entrada" value="{{ registro.entrada }}" required>
+        <label for="salida">Salida:</label>
+        <input type="localdate" id="salida" name="salida" value="{{ registro.salida }}" required>
+        <label for="celador">Celador:</label>
+        <input type="text" id="celador" name="idCel" value="{{ registro.idCel }}" required>
+        <button type="submit">Actualizar Informacion</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Administradores</title>
+</head>
+<body>
+    <h1>Lista de Administradores</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Tipo Documento</th>
+            <th>Numero Documento</th>
+            <th>Celular</th>
+            <th>Email</th>
+            <th>Contraseña</th>
+        </tr>
+        {% for administrador in data %}
+            <tr>
+                <td>{{ administrador.idAdm }}</td>
+                <td>{{ administrador.nombreAdm }}</td>
+                <td>{{ administrador.tipoDocAdm }}</td>
+                <td>{{ administrador.noDocAdm }}</td>
+                <td>{{ administrador.celAdm }}</td>
+                <td>{{ administrador.emailAdm }}</td>
+                <td>{{ administrador.conAdm }}</td>
+                <td>
+                    <a href="{{ url_for('administrador.edit', id=administrador.idAdm) }}">Editar</a>
+                    <a href="{{ url_for('administrador.delete', id=administrador.idAdm) }}">Eliminar</a>
+                    
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('administrador.add') }}">Agregar Administrador</a>
+    
+</body>
+</html>

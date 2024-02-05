@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Celador</title>
+</head>
+<body>
+    <h1>Agregar Celador</h1>
+    <form action="{{ url_for('celador.add') }}" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombreCel" required>
+        <label for="noDoc">Numero Documento:</label>
+        <input type="number" id="noDoc" name="noDocCel" required>
+        <label for="cel">Celular:</label>
+        <input type="number" id="cel" name="celCel" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="emailCel" required>
+        <label for="con">Contraseña:</label>
+        <input type="password" id="con" name="conCel" required>
+        <button type="submit">Agregar</button>
+    </form>
+</body>
+</html>

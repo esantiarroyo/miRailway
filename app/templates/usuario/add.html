@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Usuario</title>
+</head>
+<body>
+    <h1>Agregar Usuario</h1>
+    <form action="{{ url_for('usuario.add') }}" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombreUsu" required>
+        <label for="tipoDoc">Tipo Documento:</label>
+        <input type="text" id="tipoDoc" name="tipoDocUsu" required>
+        <label for="noDoc">Numero Documento:</label>
+        <input type="number" id="noDoc" name="noDocUsu" required>
+        <label for="cel">Celular:</label>
+        <input type="number" id="cel" name="celUsu" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="emailUsu" required>
+        <button type="submit">Agregar</button>
+    </form>
+</body>
+</html>

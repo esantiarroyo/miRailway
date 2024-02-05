@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Celadores</title>
+</head>
+<body>
+    <h1>Lista de Celadores</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Numero Documento</th>
+            <th>Celular</th>
+            <th>Email</th>
+            <th>Contraseña</th>
+        </tr>
+        {% for celador in data %}
+            <tr>
+                <td>{{ celador.idCel }}</td>
+                <td>{{ celador.nombreCel }}</td>
+                <td>{{ celador.noDocCel }}</td>
+                <td>{{ celador.celCel }}</td>
+                <td>{{ celador.emailCel }}</td>
+                <td>{{ celador.conCel }}</td>
+                <td>
+                    <a href="{{ url_for('celador.edit', id=celador.idCel) }}">Editar</a>
+                    <a href="{{ url_for('celador.delete', id=celador.idCel) }}">Eliminar</a>
+                    
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('celador.add') }}">Agregar</a>
+    <a href="{{ url_for('registro.index') }}">Ver Registros</a>
+    
+</body>
+</html>

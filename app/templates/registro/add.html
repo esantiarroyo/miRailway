@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Registro</title>
+</head>
+<body>
+    <h1>Agregar Registro</h1>
+    <form action="{{ url_for('registro.add') }}" method="post">
+        <label for="pc">Pc:</label>
+        <select name="idPc" id="idPc">
+            {% for pc in data %}
+                <option value="{{ pc.idPc }}">{{ pc.serialPc }}</option>
+            {% endfor %}
+        </select>
+        <label for="entrada">Entrada:</label>
+        <input type="localdate" id="entrada" name="entrada" required>
+        <label for="salida">Salida:</label>
+        <input type="localdate" id="salida" name="salida" required>
+        <label for="celador">Celador:</label>
+        <select name="idCel" id="idCel">
+            {% for celador in data1 %}
+                <option value="{{ celador.idCel }}">{{ celador.nombreCel }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Agregar</button>
+    </form>
+</body>
+</html>

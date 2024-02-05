@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Celadores</title>
+</head>
+<body>
+    <h1>Editar Celadores</h1>
+    <form action="{{ url_for('celador.edit', id=celador.idCel) }}" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombreCel" value="{{ celador.nombreCel }}" required>
+        <label for="noDoc">Numero Documeto:</label>
+        <input type="number" id="noDoc" name="noDocCel" value="{{ celador.noDocCel }}" required>
+        <label for="cel">Celular:</label>
+        <input type="number" id="cel" name="celCel" value="{{ celador.celCel }}" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="emailCel" value="{{ celador.emailCel }}" required>
+        <label for="con">Contraseña:</label>
+        <input type="password" id="con" name="conCel" value="{{ celador.conCel }}" required>
+        <button type="submit">Actualizar Informacion</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista Principal</title>
+</head>
+
+<body>
+    <a href="{{ url_for('administrador.admin') }}">Administrador</a>
+    <a>Celador</a>
+
+    <h1>Login Celador</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}             
+                {% for category, message in messages %}
+                    <div class="flash-message alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="post" action="{{ url_for('celador.login') }}">
+        <div>
+            <label for="noDocCel">Numero Documento</label>
+            <input type="text" name="noDocCel" id="noDocCel" required>
+        </div>
+        <div>
+            <label for="conCel">Contraseña</label>
+            <input type="password" name="conCel" id="conCel" required>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+
+</body>
+</html>

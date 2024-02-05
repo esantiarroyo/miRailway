@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Salida</title>
+</head>
+<body>
+    <h1>Registrar Salida</h1>
+
+    <form action="{{ url_for('celador.buscar2', serial=serial) }}" method="get">
+        <label for="serial">Serial Pc:</label>
+        <input type="text" id="serial" name="serial" required>
+        <button type="submit">Buscar</button>
+    </form>
+        
+    {% if data is defined %}
+        
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Marca</th>
+                    <th>Color</th>
+                    <th>Serial</th>
+                    <th>Usuario</th>
+                    <th>Acción</th>
+                </tr>
+                {% for celador in data %}
+                    <tr>
+                        <form action="{{ url_for('registro.edit1', id = celador.idPc ) }}" method="Get">
+                            <td>{{ celador.idPc }}</td>
+                            <td>{{ celador.marcaPc }}</td>
+                            <td>{{ celador.colorPc }}</td>
+                            <td>{{ celador.serialPc }}</td>
+                            <td>{{ celador.idUsu }}</td>
+                            <td><button type="submit">Registrar Informacion</button></td>
+                        </form>
+
+                    </tr>
+                {% endfor %}
+            </table>        
+        
+    {% endif %}
+</body>
+</html>
