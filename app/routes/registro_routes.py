@@ -39,7 +39,7 @@ def add1(idPc):
     new_registro = Registro(idPc=idPc, idCel=current_user.get_id(), entrada = datetime.now())
     db.session.add(new_registro)
     db.session.commit()
-    
+        
     return redirect(url_for('celador.entrada'))
     
 @bp.route('/Registro/edit/<int:id>', methods=['GET', 'POST'])
