@@ -4,35 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista Pcs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.js') }}"></script>
+    <style>
+        .btn-custom {
+            background-color: black;
+            color: red;
+            border-color: red; /* Cambiar el color del borde si es necesario */
+        }
+        .btn-custom2 {
+            background-color: black;
+            color: white; /* Cambiar el color del borde si es necesario */
+            font-size: 23px;
+        }
+        .btn-custom3 {
+            background-color: black;
+            color: white; /* Cambiar el color del borde si es necesario */
+            font-size: 17px;
+        }
+        .bg-negro {
+            background-color: black;
+        }
+        .bg-rojo {
+            background-color: red;
+        }
+        body {
+            background-image: url("{{ url_for('static', filename='imagenes/login.jpg') }}");
+            background-size: cover; /* Para que la imagen de fondo cubra todo el cuerpo */
+            background-repeat: no-repeat; /* Para que la imagen de fondo no se repita */
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+        .border-tar {
+            border-radius: 10px;
+        }
+        .text-red {
+            color: red;
+        }
+        th {
+            padding: 10px;
+        }
+        
+        .bor-negro{
+            border: 2px solid black
+        }
+    </style>
 </head>
 <body>
-    <h1>Lista de Pc</h1>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Marca</th>
-            <th>Color</th>
-            <th>Serial</th>
-            <th>Usuario</th>
-        </tr>
-        {% for pc in data %}
-            <tr>
-                <td>{{ pc.idPc }}</td>
-                <td>{{ pc.marcaPc }}</td>
-                <td>{{ pc.colorPc }}</td>
-                <td>{{ pc.serialPc }}</td>
-                <td>{{ pc.idUsu }}</td>
-                <td>
-                    <a href="{{ url_for('pc.edit', id=pc.idPc) }}">Editar</a>
-                    <a href="{{ url_for('pc.delete', id=pc.idPc) }}">Eliminar</a>
-                    
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-    <a href="{{ url_for('pc.add') }}">Agregar</a>
-    <a href="{{ url_for('registro.index') }}">Ver Registros</a>
-    <a href="{{ url_for('usuario.index') }}">Ver Usuarios</a>
-    
+    <div class="container mt-3">
+        <div class="row bg-negro text-white p-5 border border-danger border-tar">
+            <div class="col-md-8">
+                <h1>Lista de Pc</h1>
+            </div>
+            <div class="col-md-4 d-flex justify-content-end">
+                <a href="{{ url_for('celador.logout') }}" class="btn btn-custom me-2 pt-3">Cerrar Sesion</a>
+                <a href="{{ url_for('administrador.admin') }}" class="btn btn-custom pt-3">Panel Principal</a>
+            </div>
+            <div class="text-red mt-4">
+                <a href="{{ url_for('administrador.index') }}" class="btn btn-custom2 col-3">Administradores</a>
+                <a href="{{ url_for('celador.index') }}" class="btn btn-custom2 col-2">Celadores</a>
+                <a href="{{ url_for('pc.index') }}" class="btn btn-custom2 col-2">Pc</a>
+                <a href="{{ url_for('registro.index') }}" class="btn btn-custom2 col-2">Registros</a>
+                <a href="{{ url_for('usuario.index') }}" class="btn btn-custom2 col-2">Usuarios</a>
+            </div>
+        </div>
+        <div class="container mt-3  ">
+            <div class="row bg-negro text-white border border-danger border-tar justify-content-center">
+                <div class="d-flex justify-content-end">
+                    <a href="{{ url_for('pc.add') }}" class="btn btn-custom mt-3 me-5 col-md-2">Agregar <br> Pc</a>
+                </div>
+                <div class="col-md-8 m-5 mt-3 text-white">  
+                    <table>
+                        <tr class="text-red">
+                            <th class="col-1">ID</th>
+                            <th class="col-2">Marca</th>
+                            <th class="col-2">Color</th>
+                            <th class="col-2">Serial</th>
+                            <th class="col-1">Usuario</th>
+                        </tr>
+                        {% for pc in data %}
+                            <tr>
+                                <td>{{ pc.idPc }}</td>
+                                <td>{{ pc.marcaPc }}</td>
+                                <td>{{ pc.colorPc }}</td>
+                                <td>{{ pc.serialPc }}</td>
+                                <td>{{ pc.idUsu }}</td>
+                                <td>
+                                    <a href="{{ url_for('pc.edit', id=pc.idPc) }}" class="btn btn-custom3 me-1 ms-1 pe-1 ps-1 text-red">Editar</a>
+                                    <a href="{{ url_for('pc.delete', id=pc.idPc) }}" class="btn btn-custom3 text-red">Eliminar</a>
+                                    
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

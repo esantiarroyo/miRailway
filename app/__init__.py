@@ -13,12 +13,16 @@ def create_app():
     
     db.init_app(app)
     login_manager.init_app(app)
-    login_manager.login_view = 'celador.login'
+    login_manager.login_view = '/'
     
     @login_manager.user_loader
     def load_user(user_id):
-        from app.models.Celador import Celador       
-        return Celador.query.get(int(user_id))
+        from app.models.Celador import Celador 
+        from app.models.Administrador import Administrador
+        user = Celador.query.get(int(user_id))
+        if user is None:
+            user = Administrador.query.get(int(user_id))
+        return user
 
     from app.routes import administrador_routes, celador_routes, pc_routes, registro_routes, usuario_routes
     app.register_blueprint(administrador_routes.bp)

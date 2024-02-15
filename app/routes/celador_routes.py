@@ -17,31 +17,38 @@ def index():
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+        logout_user()
         noDocCel = request.form['noDocCel']
         conCel = request.form['conCel']
         print("antes del user")
         usuario = Celador.query.filter_by(noDocCel=noDocCel, conCel=conCel).first()
         admin = Administrador.query.filter_by(noDocAdm=noDocCel, conAdm=conCel).first()
         print(f"despues del user {usuario}")
+        print(f"despues del user {admin}")
         if usuario:
             login_user(usuario)
-            flash("Login successful!", "success")
-            #return  f"current_user {current_user.is_authenticated} {current_user.get_id()}"
+            print("Entra a celador ", current_user.is_authenticated)
             return redirect(url_for('celador.cel'))
         
         if admin:
             login_user(admin)
-            flash("Login successful!", "success")
-            #return  f"current_user {current_user.is_authenticated} {current_user.get_id()}"
+            print("Entra a admin ",current_user.is_authenticated)
             return redirect(url_for('administrador.admin'))
         
-        flash("Invalid credentials. Please try again.", "error")
+        flash("Numero de documento o contraseña incorrecto.", "error")
     if current_user.is_authenticated:
         if isinstance(current_user, Celador):
             return redirect(url_for('celador.cel'))
         else:
             return redirect(url_for('administrador.admin'))
     return render_template("index.html")
+
+@bp.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('Sesion Cerrada.', 'info')
+    return redirect(url_for('celador.login'))
 
 @bp.route('/Celador/add', methods=['GET', 'POST'])
 @login_required

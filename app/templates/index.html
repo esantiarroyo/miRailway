@@ -1,35 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vista Principal</title>
+    <title>Tu Página</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.js') }}"></script>
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='imagenes/login.jpg') }}");
+            background-size: cover; /* Para que la imagen de fondo cubra todo el cuerpo */
+            background-repeat: no-repeat; /* Para que la imagen de fondo no se repita */
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: black;
+        }
+        .btn-custom {
+            background-color: black;
+            color: red;
+            border-color: red; /* Cambiar el color del borde si es necesario */
+        }
+        .text-red {
+            color: red;
+        }
+        .border-tar {
+            border-radius: 10px;
+        }
+    </style>
 </head>
+<body class=" text-red"> <!-- Fondo negro y letras blancas -->
 
-<body>
-    <a href="{{ url_for('administrador.admin') }}">Administrador</a>
-    <a>Celador</a>
+    <div class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-3 bg-black border border-danger border-tar text-white"> <!-- Fondo negro para la tarjeta -->
+                    <div class="card-body text-center " >
+                        <h1 class="card-title text-red">Inicio Sesion</h1>
 
-    <h1>Login Celador</h1>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}             
-                {% for category, message in messages %}
-                    <div class="flash-message alert alert-{{ category }}">{{ message }}</div>
-                {% endfor %}
-        {% endif %}
-    {% endwith %}
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ category }} p-2" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
 
-    <form method="post" action="{{ url_for('celador.login') }}">
-        <div>
-            <label for="noDocCel">Numero Documento</label>
-            <input type="text" name="noDocCel" id="noDocCel" required>
+                        <form method="post" action="{{ url_for('celador.login') }}">
+                            <div class="form-group p-3">
+                                <label for="noDocCel">Numero Documento</label>
+                                <input type="text" name="noDocCel" id="noDocCel" class="form-control col-8 mt-2" required>
+                            </div>
+                            <div class="form-group p-3">
+                                <label for="conCel">Contraseña</label>
+                                <input type="password" name="conCel" id="conCel" class="form-control col-8 mt-2" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-custom p-2 ps-5 pe-5 mt-3">Ingresar</button> <!-- Botón con color rojo -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <label for="conCel">Contraseña</label>
-            <input type="password" name="conCel" id="conCel" required>
-        </div>
-        <button type="submit">Login</button>
-    </form>
+    </div>
 
 </body>
 </html>

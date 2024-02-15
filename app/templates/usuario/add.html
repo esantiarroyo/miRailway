@@ -4,21 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Usuario</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.js') }}"></script>
+    <style>
+        .btn-custom {
+            background-color: black;
+            color: red;
+            border-color: red; /* Cambiar el color del borde si es necesario */
+        }
+        .btn-custom2 {
+            background-color: black;
+            color: white; /* Cambiar el color del borde si es necesario */
+            font-size: 23px;
+        }
+        .btn-custom3 {
+            background-color: black;
+            color: white; /* Cambiar el color del borde si es necesario */
+            font-size: 17px;
+        }
+        .bg-negro {
+            background-color: black;
+        }
+        .bg-rojo {
+            background-color: red;
+        }
+        body {
+            background-image: url("{{ url_for('static', filename='imagenes/login.jpg') }}");
+            background-size: cover; /* Para que la imagen de fondo cubra todo el cuerpo */
+            background-repeat: no-repeat; /* Para que la imagen de fondo no se repita */
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+        .border-tar {
+            border-radius: 10px;
+        }
+        .text-red {
+            color: red;
+        }
+        th {
+            padding: 10px;
+        }
+        
+        .bor-negro{
+            border: 2px solid black
+        }
+    </style>
 </head>
 <body>
-    <h1>Agregar Usuario</h1>
-    <form action="{{ url_for('usuario.add') }}" method="post">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombreUsu" required>
-        <label for="tipoDoc">Tipo Documento:</label>
-        <input type="text" id="tipoDoc" name="tipoDocUsu" required>
-        <label for="noDoc">Numero Documento:</label>
-        <input type="number" id="noDoc" name="noDocUsu" required>
-        <label for="cel">Celular:</label>
-        <input type="number" id="cel" name="celUsu" required>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="emailUsu" required>
-        <button type="submit">Agregar</button>
-    </form>
+    <div class="container mt-3">
+        <div class="row bg-negro text-white p-5 border border-danger border-tar">
+            <div class="col-md-8">
+                <h1>Agregar Usuario</h1>
+            </div>
+            <div class="col-md-4 d-flex justify-content-end">
+                <a href="{{ url_for('celador.logout') }}" class="btn btn-custom me-2 pt-3">Cerrar Sesion</a>
+                <a href="{{ url_for('usuario.index') }}" class="btn btn-custom pt-3">Volver</a>
+            </div>
+        </div>
+        <div class="container mt-3  ">
+            <div class="row bg-negro text-white border border-danger border-tar justify-content-center">
+                <div class="col-md-4 m-5 mt-3 text-white">
+                    <form action="{{ url_for('usuario.add') }}" method="post">
+                        <div class="form-group">
+                            <label for="nombre">Nombre:</label><br>
+                            <input type="text" id="nombre" name="nombreUsu" class="form-control col-8 mt-2" required><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipoDoc">Tipo Documento:</label><br>
+                            <input type="text" id="tipoDoc" name="tipoDocUsu" class="form-control col-8 mt-2" required><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="noDoc">Numero Documento:</label><br>
+                            <input type="number" id="noDoc" name="noDocUsu" class="form-control col-8 mt-2" required><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="cel">Celular:</label><br>
+                            <input type="number" id="cel" name="celUsu" class="form-control col-8 mt-2" required><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label><br>
+                            <input type="email" id="email" name="emailUsu" class="form-control col-8 mt-2" required><br>
+                        </div>
+                        <div class="form-group d-flex justify-content-center">
+                            <button type="submit" class="btn btn-custom mt-2">Crear Usuario</button><br>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

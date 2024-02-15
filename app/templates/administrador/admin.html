@@ -4,14 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Administrador</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.js') }}"></script>
+    <style>
+        .btn-custom {
+            background-color: black;
+            color: red;
+            border-color: red; /* Cambiar el color del borde si es necesario */
+        }
+        .btn-custom2 {
+            background-color: black;
+            color: white; /* Cambiar el color del borde si es necesario */
+            font-size: 23px;
+        }
+        .bg-negro {
+            background-color: black;
+        }
+        .bg-rojo {
+            background-color: red;
+        }
+        body {
+            background-image: url("{{ url_for('static', filename='imagenes/login.jpg') }}");
+            background-size: cover; /* Para que la imagen de fondo cubra todo el cuerpo */
+            background-repeat: no-repeat; /* Para que la imagen de fondo no se repita */
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+        .border-tar {
+            border-radius: 10px;
+        }
+        .text-red {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="container mt-3">
+        <div class="row bg-negro text-white p-5 border border-danger border-tar">
+            <div class="col-md-8">
+                <h1>Panel Administrador</h1>
+            </div>
+            <div class="col-md-4 d-flex justify-content-end ">
+                <a href="{{ url_for('celador.logout') }}" class="btn btn-custom pt-3">Cerrar sesión</a>
+            </div>
+        </div>
+        <div class="container mt-3  ">
+            <div class="row bg-negro text-red border border-danger border-tar">
+                <div class="col-md-4">
+                    <a href="{{ url_for('administrador.index') }}" class="btn btn-custom2 ms-5 mt-4 p-3"> Ver Administradores</a><br>
+                    <a href="{{ url_for('celador.index') }}" class="btn btn-custom2 ms-5 mt-4 p-3"> Ver Celadores</a><br>
+                    <a href="{{ url_for('pc.index') }}" class="btn btn-custom2 ms-5 mt-4 p-3"> Ver Pc</a><br>
+                    <a href="{{ url_for('registro.index') }}" class="btn btn-custom2 ms-5 mt-4 p-3"> Ver Registros</a><br>
+                    <a href="{{ url_for('usuario.index') }}" class="btn btn-custom2 ms-5 mt-4 p-3"> Ver Usuarios</a><br>
+                </div>
+                <div class="col-md-8  p-3 d-flex align-items-center justify-content-end"> 
+                    <img src="{{ url_for('static', filename='imagenes/imgAdministrador.jpg') }}" alt="Celador" class="img-fluid border-tar me-5" style="max-width: 38%;">
+                </div>
+            </div>
+        </div>
+    </div>
     
-    <a href="{{ url_for('administrador.index') }}">Administradores</a>
-    <a href="{{ url_for('celador.index') }}">Celadores</a>
-    <a href="{{ url_for('pc.index') }}">Pc</a>
-    <a href="{{ url_for('registro.index') }}">Registros</a>
-    <a href="{{ url_for('usuario.index') }}">Usuarios</a>
 </body>
 </html>

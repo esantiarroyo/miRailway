@@ -4,23 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Pcs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.js') }}"></script>
+    <style>
+        .btn-custom {
+            background-color: black;
+            color: red;
+            border-color: red; /* Cambiar el color del borde si es necesario */
+        }
+        .btn-custom2 {
+            background-color: black;
+            color: white; /* Cambiar el color del borde si es necesario */
+            font-size: 23px;
+        }
+        .btn-custom3 {
+            background-color: black;
+            color: white; /* Cambiar el color del borde si es necesario */
+            font-size: 17px;
+        }
+        .bg-negro {
+            background-color: black;
+        }
+        .bg-rojo {
+            background-color: red;
+        }
+        body {
+            background-image: url("{{ url_for('static', filename='imagenes/login.jpg') }}");
+            background-size: cover; /* Para que la imagen de fondo cubra todo el cuerpo */
+            background-repeat: no-repeat; /* Para que la imagen de fondo no se repita */
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+        .border-tar {
+            border-radius: 10px;
+        }
+        .text-red {
+            color: red;
+        }
+        th {
+            padding: 10px;
+        }
+        
+        .bor-negro{
+            border: 2px solid black
+        }
+    </style>
 </head>
 <body>
-    <h1>Editar Pc</h1>
-    <form action="{{ url_for('pc.edit', id=pc.idPc) }}" method="post">
-        <label for="marca">Marca:</label>
-        <input type="text" id="marca" name="marcaPc" value="{{ pc.marcaPc }}" required>
-        <label for="color">Color:</label>
-        <input type="text" id="color" name="colorPc" value="{{ pc.colorPc }}" required>
-        <label for="serial">Serial:</label>
-        <input type="text" id="serial" name="serialPc" value="{{ pc.serialPc }}" required>
-        <label for="usuario">Usuario:</label>
-        <select name="idUsu" id="idUsu">
-            {% for usuario in data %}
-                <option value="{{ usuario.idUsu }}">{{ usuario.nombreUsu }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">Actualizar Informacion</button>
-    </form>
+    <div class="container mt-3">
+        <div class="row bg-negro text-white p-5 border border-danger border-tar">
+            <div class="col-md-8">
+                <h1>Editar Pc</h1>
+            </div>
+            <div class="col-md-4 d-flex justify-content-end">
+                <a href="{{ url_for('celador.logout') }}" class="btn btn-custom me-2 pt-3">Cerrar Sesion</a>
+                <a href="{{ url_for('pc.index') }}" class="btn btn-custom pt-3">Volver</a>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <div class="row bg-negro text-white border border-danger border-tar justify-content-center">
+                <div class="col-md-4 m-5 mt-3 text-white">
+                    <form action="{{ url_for('pc.edit', id=pc.idPc) }}" method="post">
+                        <div class="form-group">
+                            <label for="marca">Marca:</label><br>
+                            <input type="text" id="marca" name="marcaPc" value="{{ pc.marcaPc }}" class="form-control col-8 mt-2" required><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="color">Color:</label><br>
+                            <input type="text" id="color" name="colorPc" value="{{ pc.colorPc }}" class="form-control col-8 mt-2" required><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="serial">Serial:</label><br>
+                            <input type="text" id="serial" name="serialPc" value="{{ pc.serialPc }}" class="form-control col-8 mt-2" required><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="usuario">Usuario:</label><br>
+                            <select name="idUsu" id="idUsu" class="form-control col-8 mt-2">
+                                {% for usuario in data %}
+                                    <option value="{{ usuario.idUsu }}">{{ usuario.nombreUsu }}</option>
+                                {% endfor %}
+                            </select><br>
+                        </div>
+                        <div class="form-group d-flex justify-content-center">
+                            <button type="submit" class="btn btn-custom mt-4">Actualizar Informacion</button><br>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

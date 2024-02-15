@@ -61,6 +61,7 @@ def delete(id):
 @bp.route('/Administrador/admin')
 @login_required
 def admin():
+    print("En admin current user ", current_user.is_authenticated)
     return render_template('administrador/admin.html')
 
 @bp.route('/')

@@ -4,12 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Celador</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.js') }}"></script>
+    <style>
+        .btn-custom {
+            background-color: black;
+            color: red;
+            border-color: red; /* Cambiar el color del borde si es necesario */
+        }
+        .btn-custom2 {
+            background-color: black;
+            color: white; /* Cambiar el color del borde si es necesario */
+            font-size: 23px;
+        }
+        .bg-negro {
+            background-color: black;
+        }
+        .bg-rojo {
+            background-color: red;
+        }
+        body {
+            background-image: url("{{ url_for('static', filename='imagenes/login.jpg') }}");
+            background-size: cover; /* Para que la imagen de fondo cubra todo el cuerpo */
+            background-repeat: no-repeat; /* Para que la imagen de fondo no se repita */
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+        .border-tar {
+            border-radius: 10px;
+        }
+        .text-red {
+            color: red;
+        }
+    </style>
 </head>
-
-<body>
-    <a href="{{ url_for('pc.add') }}">Agregar Pc</a>
-    <a href="{{ url_for('celador.entrada') }}">Registrar Entrada</a>
-    <a href="{{ url_for('celador.salida') }}">Registrar Salida</a>
-    
+<body class="bg-dark">
+    <div class="container mt-3">
+        <div class="row bg-negro text-white p-5 border border-danger border-tar">
+            <div class="col-md-8">
+                <h1>Panel Celador</h1>
+            </div>
+            <div class="col-md-4 d-flex justify-content-end">
+                <a href="{{ url_for('celador.logout') }}" class="btn btn-custom">Cerrar Sesión</a>
+            </div>
+        </div>
+        <div class="container mt-3  ">
+            <div class="row bg-negro text-red border border-danger border-tar">
+                <div class="col-md-4">
+                    <a href="{{ url_for('celador.entrada') }}" class="btn btn-custom2 m-5 p-3">Registrar Entrada</a>
+                    <a href="{{ url_for('celador.salida') }}" class="btn btn-custom2 m-5 p-3">Registrar Salida</a>
+                </div>
+                <div class="col-md-8  p-3 d-flex align-items-center justify-content-end"> 
+                    <img src="{{ url_for('static', filename='imagenes/imgCelador.jpg') }}" alt="Celador" class="img-fluid border-tar me-5" style="max-width: 38%;">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
