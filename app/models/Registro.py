@@ -8,5 +8,5 @@ class Registro(db.Model):
     entrada = db.Column(db.TIMESTAMP, nullable=True)
     salida = db.Column(db.TIMESTAMP, nullable=True)
     idCel = db.Column(db.Integer, db.ForeignKey('celadores.idCel'))
-    celador = db.relationship('Celador', back_populates='registros')
+    celador = db.relationship('Celador')
     

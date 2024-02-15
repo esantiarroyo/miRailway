@@ -32,7 +32,8 @@
             background-image: url("{{ url_for('static', filename='imagenes/login.jpg') }}");
             background-size: cover; /* Para que la imagen de fondo cubra todo el cuerpo */
             background-repeat: no-repeat; /* Para que la imagen de fondo no se repita */
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: black;
         }
         .border-tar {
             border-radius: 10px;
@@ -87,7 +88,7 @@
                                 <td>{{ pc.marcaPc }}</td>
                                 <td>{{ pc.colorPc }}</td>
                                 <td>{{ pc.serialPc }}</td>
-                                <td>{{ pc.idUsu }}</td>
+                                <td>{{ pc.usuarios.nombreUsu }}</td>
                                 <td>
                                     <a href="{{ url_for('pc.edit', id=pc.idPc) }}" class="btn btn-custom3 me-1 ms-1 pe-1 ps-1 text-red">Editar</a>
                                     <a href="{{ url_for('pc.delete', id=pc.idPc) }}" class="btn btn-custom3 text-red">Eliminar</a>

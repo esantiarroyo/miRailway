@@ -7,7 +7,7 @@ class Pc(db.Model):
     colorPc = db.Column(db.String(45), nullable=False)
     serialPc = db.Column(db.String(45), nullable=False)
     idUsu = db.Column(db.Integer, db.ForeignKey('usuarios.idUsu'))
-    usuarios = db.relationship('Usuario', back_populates='pcs')
+    usuarios = db.relationship('Usuario')
     
     registros = db.relationship('Registro', back_populates='pc')
     
